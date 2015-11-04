@@ -2,19 +2,21 @@
   "name": "angular-diff-match-patch",
   "author": "Adam Weiss <cseadam@gmail.com>",
   "license": "MIT",
-  "version": "0.1.6",
+  "version": "0.1.12",
   "description": "An Angular module to use when dealing with google-diff-match-patch.",
   "private": true,
   "repository": {
     "url": "https://github.com/amweiss/angular-diff-match-patch.git"
   },
   "devDependencies": {
-    "http-server": "^0.7.3",
-    "karma": "^0.12.25",
-    "karma-coverage": "^0.2.6",
-    "karma-coveralls": "^0.1.4",
-    "karma-jasmine": "^0.3.0",
-    "karma-phantomjs-launcher": "^0.1.4"
+    "http-server": "^0.8",
+    "jasmine-core": "*",
+    "phantomjs": "^1.*",
+    "karma": "^0.13",
+    "karma-coverage": "^0.5",
+    "karma-coveralls": "^1.*",
+    "karma-jasmine": "^0.3",
+    "karma-phantomjs-launcher": "^0.2"
   },
   "scripts": {
     "prestart": "npm install",
