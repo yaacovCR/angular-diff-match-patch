@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>angular-diff-match-patch</title>
-  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.1.0/octicons.min.css">
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc4/angular-material.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css">
   <link rel="icon" type="image/x-icon" href="https://angularjs.org/favicon.ico">
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-animate.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-aria.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc4/angular-material.min.js"></script>
   <script src="//neil.fraser.name/software/diff_match_patch/svn/trunk/javascript/diff_match_patch.js"></script>
   <script src="angular-diff-match-patch.js"></script>
   <style>
@@ -66,32 +66,24 @@
     });
 
     app.controller('diffCtrl', ['$scope', function($scope) {
-      $scope.left = ["I am the very model of a modern Major-General,",
-        "I've information vegetable, animal, and mineral,",
-        "I know the kings of England, and I quote the fights historical,",
-        "From Marathon to Waterloo, in order categorical."
+      $scope.left = ['I am the very model of a modern Major-General,',
+        'I\'ve information vegetable, animal, and mineral,',
+        'I know the kings of England, and I quote the fights historical,',
+        'From Marathon to Waterloo, in order categorical.'
       ].join('\n');
 
-      $scope.right = ["I am the very model of a cartoon individual,",
-        "My animation's comical, unusual, and whimsical,",
-        "I know the kings of England, and I quote the fights historical,",
-        "From wicked puns and stupid jokes to anvils that drop on your head."
+      $scope.right = ['I am the very model of a cartoon individual,',
+        'My animation\'s comical, unusual, and whimsical,',
+        'I know the kings of England, and I quote the fights historical,',
+        'From wicked puns and stupid jokes to anvils that drop on your head.'
       ].join('\n');
 
       $scope.options = {
         editCost: 4,
-        attrs: {
-          insert: {
-            'data-attr': 'insert',
-            'class': 'insertion'
-          },
-          delete: {
-            'data-attr': 'delete'
-          },
-          equal: {
-            'data-attr': 'equal'
-          }
-        }
+        interLineDiff: true,
+        attrs: new Map().set('insert', new Map().set('data-attr','insert').set('class','insertion'))
+                        .set('delete', new Map().set('data-attr', 'delete'))
+                        .set('equal', new Map().set('data-attr', 'equal'))
       };
     }]);
   </script>
@@ -151,8 +143,14 @@
         </md-card>
         <md-card flex>
           <md-card-content>
-            <h2>lineDiff</h2>
-            <pre class="textdiff" line-diff left-obj="left" right-obj="right"></pre>
+            <div layout="row">
+              <h2>lineDiff</h2>
+              <span flex></span>
+              <md-input-container>
+                <md-checkbox name="interLineDiff" ng-model="options.interLineDiff">interLineDiff</md-checkbox>
+              </md-input-container>
+            </div>
+            <pre class="textdiff" line-diff left-obj="left" right-obj="right" options="options"></pre>
           </md-card-content>
         </md-card>
       </div>

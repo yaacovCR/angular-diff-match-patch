@@ -2,15 +2,21 @@ var coverageReporters = [
 	{type: 'text-summary'}
 ];
 
+var junitReporterConfig = {
+	outputDir: 'test/results'
+};
+
 var reporters = [
 	'dots',
-	'coverage'
+	'coverage',
+	'junit'
 ];
 
 if (process.env.CIRCLECI) {
 	console.log('On CI sending coveralls');
 	coverageReporters.push({type: 'lcov', dir: process.env.CIRCLE_ARTIFACTS});
 	reporters.push('coveralls');
+	junitReporterConfig.outputDir = process.env.CIRCLE_TEST_REPORTS;
 } else {
 	console.log('Not on CI so not sending coveralls');
 	coverageReporters.push({type: 'html', dir: 'coverage/'});
@@ -28,6 +34,7 @@ module.exports = function (config) {
 
 		// list of files / patterns to load in the browser
 		files: [
+			'node_modules/es6-shim/es6-shim.min.js',
 			'node_modules/angular/angular.js',
 			'node_modules/angular-mocks/angular-mocks.js',
 			'node_modules/diff-match-patch/index.js',
@@ -77,6 +84,8 @@ module.exports = function (config) {
 
 		coverageReporter: {
 			reporters: coverageReporters
-		}
+		},
+
+		junitReporter: junitReporterConfig
 	});
 };
