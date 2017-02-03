@@ -1,14 +1,19 @@
 angular-diff-match-patch
 ========================
-[![Circle CI](https://circleci.com/gh/amweiss/angular-diff-match-patch.svg?style=svg)](https://circleci.com/gh/amweiss/angular-diff-match-patch) [![Coverage Status](https://coveralls.io/repos/github/amweiss/angular-diff-match-patch/badge.svg?branch=master)](https://coveralls.io/github/amweiss/angular-diff-match-patch?branch=master)
+[![CircleCI](https://img.shields.io/circleci/project/amweiss/angular-diff-match-patch.svg?maxAge=2592000)](https://circleci.com/gh/amweiss/angular-diff-match-patch) [![Codecov](https://img.shields.io/codecov/c/github/amweiss/angular-diff-match-patch.svg?maxAge=2592000)](https://codecov.io/gh/amweiss/angular-diff-match-patch)
 
-[![Dependencies](https://david-dm.org/amweiss/angular-diff-match-patch.svg)](https://david-dm.org/amweiss/angular-diff-match-patch/#info=dependencies&view=table) [![DevDependencies](https://david-dm.org/amweiss/angular-diff-match-patch/dev-status.svg)](https://david-dm.org/amweiss/angular-diff-match-patch/#info=devDependencies&view=table) [![PeerDependencies](https://david-dm.org/amweiss/angular-diff-match-patch/peer-status.svg)](https://david-dm.org/amweiss/angular-diff-match-patch/#info=peerDependencies&view=table)
+[![David](https://img.shields.io/david/amweiss/angular-diff-match-patch.svg?maxAge=2592000)](https://david-dm.org/amweiss/angular-diff-match-patch/#info=dependencies&view=table) [![David](https://img.shields.io/david/dev/amweiss/angular-diff-match-patch.svg?maxAge=2592000)](https://david-dm.org/amweiss/angular-diff-match-patch/#info=devDependencies&view=table)
 
 This library is simply a wrapper around [google-diff-match-patch](https://code.google.com/p/google-diff-match-patch/).
 
 ![Simple](http://amweiss.github.io/angular-diff-match-patch/simple.png)
 
 (Shown here with some custom styles)
+
+Angular 2 Port
+---------------
+
+Should you wish to use this in an Angular 2+ project, take a look at this port: [elliotforbes/ng-diff-match-patch](https://github.com/elliotforbes/ng-diff-match-patch)
 
 Setup
 -----
@@ -51,6 +56,8 @@ $scope.options = {
 ```
 
 `editCost` is specific to `processingDiff` and controls the tolerence for hunk separation.  `attrs` can contain any/all/none of the following: `insert`, `delete`, and `equal` where the properties in those objects represent attributes that get added to the tags.
+
+Another option is to skip angular processing the diff, it's useful when you want to show a diff of a code pre-compiled by angular. The attribute you need to add is called: `skipAngularCompilingOnDiff`. If set to `true`, would skip compiling, otherwise it would compile the diff.
 
 Add some style
 ```css
