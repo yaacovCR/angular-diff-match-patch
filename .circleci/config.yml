@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/angular-diff-match-patch
+    docker:
+      - image: kkarczmarczyk/node-yarn:latest
+    steps:
+      - run:
+          name: Set NPM token
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - checkout
+      - run:
+          name: Install packages
+          command: yarn install
+      - run:
+          name: Run tests
+          command: yarn test
+      - run:
+          name: Submit coverage report
+          command: bash <(curl -s https://codecov.io/bash) -r amweiss/angular-diff-match-patch
+      - store_test_results:
+          path: ./test/results
+      - store_artifacts:
+          path: ./coverage
+          destination: build
+      - deploy:
+          name: NPM Publish
+          command: |
+            if [ ! -z "$CIRCLE_TAG" ];
+              then npm publish;
+              else echo " No tag found, no attempt to publish to npm. ";
+            fi
+
+deployment:
+  fake_deploy_for_cci2:
+    tag: /v.*/
+    commands:
+      - echo "make tags run in 2.0"
