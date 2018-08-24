@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.23"></a>
+## [0.6.23](https://github.com/amweiss/angular-diff-match-patch/compare/v0.6.15...v0.6.23) (2018-08-24)
+
+
+
+<a name="0.6.16"></a>
+## [0.6.16](https://github.com/amweiss/angular-diff-match-patch/compare/v0.6.15...v0.6.16) (2018-07-16)
+
+
+
+<a name="0.6.15"></a>
+## [0.6.15](https://github.com/amweiss/angular-diff-match-patch/compare/v0.6.14...v0.6.15) (2018-05-29)
+
+
+
+<a name="0.6.14"></a>
+## [0.6.14](https://github.com/amweiss/angular-diff-match-patch/compare/v0.6.13...v0.6.14) (2018-04-10)
+
+
+### Bug Fixes
+
+* **demo:** Fix the js files in the local demo ([341edb0](https://github.com/amweiss/angular-diff-match-patch/commit/341edb0))
+
+
+
 <a name="0.6.13"></a>
 ## [0.6.13](https://github.com/amweiss/angular-diff-match-patch/compare/v0.6.12...v0.6.13) (2018-03-23)
 
